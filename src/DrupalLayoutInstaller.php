@@ -12,7 +12,19 @@ class DrupalLayoutInstaller extends LibraryInstaller
    */
   public function getInstallPath(PackageInterface $package)
   {
-    return 'layouts/';
+    // Get full name of the package.
+    $name = array_pop(explode('/', $package->getName()));
+    $prefix = substr($name, 0, 14);
+    if ('drupal-layout-' !== $prefix) {
+      throw new \InvalidArgumentException(
+        'Unable to install layout, Drupal layouts '
+        .'should always start their package name with '
+        .'"drupal-layout-"'
+      );
+    }
+
+    // Remove 'drupal-layout-' prefix.
+    return 'layouts/'.substr($name, 14);
   }
 
   /**
