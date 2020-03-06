@@ -12,8 +12,12 @@ class DrupalLayoutInstaller extends LibraryInstaller
    */
   public function getInstallPath(PackageInterface $package)
   {
-    // Get full name of the package.
-    $name = array_pop(explode('/', $package->getName()));
+    // Get name of the package. i.e. 'drupal-layout-fourcol'
+    // from 'vijaycs85/drupal-layout-fourcol'.
+    $package_name = explode('/', $package->getName());
+    $name = array_pop($package_name);
+
+    // Get 'drupal-layout-' prefix.
     $prefix = substr($name, 0, 14);
     if ('drupal-layout-' !== $prefix) {
       throw new \InvalidArgumentException(
