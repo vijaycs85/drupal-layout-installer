@@ -1,0 +1,18 @@
+{
+    "name": "vijaycs85/drupal-layout-installer-plugin",
+    "description": "Installs Drupal layout in theme specific directory.",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {"Vijaycs85\\Composer\\": "src/"}
+    },
+    "extra": {
+        "class": "Vijaycs85\\Composer\\DrupalLayoutInstallerPlugin"
+    },
+    "require": {
+        "composer-plugin-api": "^1.0"
+    },
+    "require-dev": {
+        "composer/composer": "^1.3"
+    }
+}
